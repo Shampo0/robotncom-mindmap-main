@@ -38,13 +38,24 @@
     }
 
     #closeModal {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      /* Updated to move the close button to the right */
-      font-size: 20px;
-      cursor: pointer;
-    }
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #d9d9d950;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: #fff;
+    border: none;
+    outline: none;
+    text-align: center;
+}
 
     .image-container {
       display: flex;
@@ -54,6 +65,7 @@
 
     .image-container img {
       position: absolute;
+      z-index: -1;
       bottom: 0;
       right: 0;
     }
@@ -61,8 +73,8 @@
     .custom-button {
       padding: 6px 10px;
       margin: 10px;
-      border: 2px solid #ffffff;
-      background-color: #d9d9d9;
+      border: 1px solid #ffffff;
+      background-color: #d9d9d959;
       border-radius: 50px;
       color: #ffffff;
       cursor: pointer;
@@ -78,17 +90,25 @@
     <div id="myModal" class="modal">
       <span id="closeModal">&times;</span>
       <div style="flex: 1;">
-        <img src="Group.png" alt="">
-        <img src="Vector.png" alt="">
+        <div>
+
+          <img src="Group.png" alt="" style="margin-right: 10px;">
+          <img src="Vector.png" alt="">
+          </div>
+          <p style="
+                float: right;
+                color: rgba(255, 255, 255, 0.822);
+                margin-right: 10px;
+              ">
+          Platfrom 01
+        </p>
         <h2>나아파 Naafaa</h2>
         <p>나아파는 가나다라마바사아자차카타파하</p>
       </div>
       <div class="image-container">
-        <div>
           <img src="Naafaa2.png" alt="Naafa Image" />
-        </div>
       </div>
-      <div style="width: 50%;">
+      <div style="width: 40%;">
         <button class="custom-button" onclick="showNaafaModal()">
           의료통합 Saas 플랫폼
         </button>
@@ -108,7 +128,7 @@
   <div id="3d-graph"></div>
 
   <script>
-    const distance = 260;
+    const distance = 300;
 
     const nodeImages = {
       1: "logo.png",
@@ -119,7 +139,7 @@
         수상: "Win.png",
       },
       3: {
-        페일러톡: "Platform.png",
+        페일러톡: "Failertalk.png",
         딱따구리: "Ttakttaguri.png",
         나아파: "Naafaa.png",
         문자페이: "Moonjapay.png",
@@ -170,16 +190,24 @@
 
           const textureLoader = new THREE.TextureLoader();
           const logoTexture = textureLoader.load(imageSrc);
-
-          // 사용자의 이미지에 맞게 기하학적 모양을 조정하려면 PlaneGeometry의 가로와 세로를 조절하세요.
-          const imageMaterial = new THREE.MeshStandardMaterial({
+          logoTexture.encoding = THREE.sRGBEncoding;
+          logoTexture.wrapS = THREE.ClampToEdgeWrapping;
+          logoTexture.wrapT = THREE.ClampToEdgeWrapping;
+          const logoMaterial = new THREE.MeshBasicMaterial({
             map: logoTexture,
-            roughness: 1, // 로프니스를 1로 설정하여 광택이 없는 완전한 표면을 만듭니다.
-            metalness: -0.7, // 메탈 속성을 0으로 설정하여 비금속 재질을 만듭니다.
             depthTest: false,
-            transparent: true,
-            // opacity: 1,
+            transparent: false,
             side: THREE.DoubleSide,
+          });
+
+          const logo = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), logoMaterial);
+          const imageMaterial = new THREE.MeshBasicMaterial({
+            map: logoTexture,
+            depthTest: false,
+            transparent: false,
+            opacity: 1,
+            side: THREE.DoubleSide,
+            alphaTest : 0.3,
           });
 
           const image = new THREE.Mesh(
