@@ -38,24 +38,24 @@
     }
 
     #closeModal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #d9d9d950;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    color: #fff;
-    border: none;
-    outline: none;
-    text-align: center;
-}
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #d9d9d950;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      color: #fff;
+      border: none;
+      outline: none;
+      text-align: center;
+    }
 
     .image-container {
       display: flex;
@@ -88,14 +88,13 @@
   <div id="Modalbackground"
     style="height: 100vh; width: 100vw; position: fixed; display: none; justify-content: center; align-items: center; z-index: 100;">
     <div id="myModal" class="modal">
-      <span id="closeModal">&times;</span>
+      <span id="closeModal" onclick="hideModal()">&times;</span>
       <div style="flex: 1;">
         <div>
-
           <img src="Group.png" alt="" style="margin-right: 10px;">
           <img src="Vector.png" alt="">
-          </div>
-          <p style="
+        </div>
+        <p style="
                 float: right;
                 color: rgba(255, 255, 255, 0.822);
                 margin-right: 10px;
@@ -106,7 +105,7 @@
         <p>나아파는 가나다라마바사아자차카타파하</p>
       </div>
       <div class="image-container">
-          <img src="Naafaa2.png" alt="Naafa Image" />
+        <img src="Naafaa2.png" alt="Naafa Image" />
       </div>
       <div style="width: 40%;">
         <button class="custom-button" onclick="showNaafaModal()">
@@ -129,14 +128,14 @@
 
   <script>
     const distance = 300;
-
+    let allowRotation = true; // 회전 여부를 추적하는 전역 변수
     const nodeImages = {
       1: "RobotNCom.svg",
       2: {
         플랫폼: "Platform.svg",
         기술: "SI.svg",
         SNS: "SNS.svg",
-        수상: "Win.svg",
+        수상: "Certifications_Awards.svg",
       },
       3: {
         페일러톡: "Failertalk.svg",
@@ -168,6 +167,8 @@
       .enableNavigationControls(false)
       .enableNodeDrag(false)
       .onNodeClick((node) => {
+        showNodeModal();
+        allowRotation = false;
         const nodeId = node.id;
         if (nodeImages[node.group]) {
           const imageSrc = nodeImages[node.group];
@@ -176,6 +177,7 @@
             console.log(`Node "${nodeId}" clicked!`);
           }
         }
+        
       })
 
       .nodeThreeObject((node) => {
@@ -243,6 +245,15 @@
           }
         });
       });
+      setInterval(() => {
+    if (allowRotation) {
+      Graph.cameraPosition({
+        x: distance * Math.sin(angle),
+        z: distance * Math.cos(angle),
+      });
+      angle += Math.PI / 6500;
+    }
+  }, 10);
 
     window.addEventListener("resize", () => {
       const graphContainer = document.getElementById("3d-graph");
@@ -269,9 +280,9 @@
 
     Graph.onNodeClick((node) => {
       const nodeId = node.id;
-
       if (nodeId === "나아파") {
         showNaafaModal();
+        allowRotation = false; // 노드를 클릭하면 모달이 열리면서 회전을 멈춥니다.
       } else if (node.id === "인스타그램") {
         window.open("https://www.instagram.com/robot_n_com/", "_blank");
       } else if (node.id === "홈페이지") {
@@ -280,9 +291,15 @@
         window.open("https://blog.naver.com/robotncom", "_blank");
       } else if (node.id === "카카오톡") {
         window.open("http://pf.kakao.com/_VMxcds", "_blank");
+      } else {
+        allowRotation = true; // 다른 노드에 대해서는 다시 회전을 시작합니다.
       }
     });
-
+    function hideModal() {
+      const modal = document.getElementById("Modalbackground");
+    modal.style.display = "none";
+    allowRotation = true; // 모달이 닫힐 때 다시 회전을 시작합니다.
+  }
     // camera orbit
     let angle = 10;
     setInterval(() => {
@@ -299,22 +316,32 @@
     );
     Graph.renderer().setClearColor(new THREE.Color("black"));
     backgroundTexture.minFilter = THREE.LinearFilter;
-    Graph.scene().background = backgroundTexture;
+    Graph.scene().background = backgroundTexture;qu
+    
+    window.addEventListener("resize", () => {
+      const graphContainer = document.getElementById("3d-graph");
+      Graph.width(graphContainer.offsetWidth).height(graphContainer.offsetHeight);
+    });
 
     function showNaafaModal() {
-      console.log("showNaafaModal called");
-      const modal = document.getElementById("Modalbackground");
-      modal.style.display = "flex";
-    }
+    const modal = document.getElementById("Modalbackground");
+    modal.style.display = "flex";
+    Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
+  }
 
-    function hideModal() {
-      const modal = document.getElementById("Modalbackground");
-      modal.style.display = "none";
-    }
+  function hideModal() {
+    const modal = document.getElementById("Modalbackground");
+    modal.style.display = "none";
+    Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
+  }
 
-    document
-      .getElementById("closeModal")
-      .addEventListener("click", hideModal);
+  // 다른 모달이 열릴 때도 회전을 멈추도록 수정
+  function showOtherModal() {
+    const otherModal = document.getElementById("OtherModal"); // 다른 모달의 ID에 따라 수정
+    otherModal.style.display = "flex";
+    allowRotation = false; // 다른 모달이 열리면 회전을 멈춥니다.
+  }
+  document.getElementById("closeModal").addEventListener("click", hideModal);
   </script>
 </body>
 
