@@ -131,32 +131,33 @@
     const distance = 300;
 
     const nodeImages = {
-      1: "logo.png",
+      1: "RobotNCom.svg",
       2: {
-        플랫폼: "Platform.png",
-        기술: "SI.png",
-        SNS: "SNS.png",
-        수상: "Win.png",
+        플랫폼: "Platform.svg",
+        기술: "SI.svg",
+        SNS: "SNS.svg",
+        수상: "Win.svg",
       },
       3: {
-        페일러톡: "Failertalk.png",
-        딱따구리: "Ttakttaguri.png",
-        나아파: "Naafaa.png",
-        문자페이: "Moonjapay.png",
-        놀가: "Nolga.png",
-        "서버 솔루션": "Server.png",
-        "보안 솔루션": "Security.png",
-        "네트워크 솔루션": "Network.png",
-        "Computer HW": "Hardware.png",
-        보이스인프라: "Voiceinfra.png",
-        "Computer SW": "Software.png",
-        인스타그램: "Insta.png",
-        홈페이지: "Home.png",
-        "네이버 블로그": "Blog.png",
-        카카오톡: "Kakao.png",
-        "중소벤처기업부 경영혁신 부문 장관상": "Win.png",
-        "대한민국 엔지니어상": "Win.png",
-        "한국 대표 브랜드 TOP 100 [IT 플랫폼] 부문 수상": "Win.png",
+        페일러톡: "Failertalk.svg",
+        팀워크: "Teamwork.svg",
+        딱따구리: "Ttakttaguri.svg",
+        나아파: "Naafaa.svg",
+        문자페이: "Moonjapay.svg",
+        놀가: "Nolga.svg",
+        "서버 솔루션": "Server.svg",
+        "보안 솔루션": "Security.svg",
+        "네트워크 솔루션": "Network.svg",
+        "Computer HW": "Hardware.svg",
+        보이스인프라: "Voiceinfra.svg",
+        "Computer SW": "Software.svg",
+        인스타그램: "Instagram.svg",
+        홈페이지: "Homepage.svg",
+        "네이버 블로그": "Blog.svg",
+        카카오톡: "kakaotalk.svg",
+        "중소벤처기업부 경영혁신 부문 장관상": "Certifications_Awards.svg",
+        "대한민국 엔지니어상": "Certifications_Awards.svg",
+        "한국 대표 브랜드 TOP 100 [IT 플랫폼] 부문 수상": "Certifications_Awards.svg",
       },
     };
 
@@ -196,18 +197,17 @@
           const logoMaterial = new THREE.MeshBasicMaterial({
             map: logoTexture,
             depthTest: false,
-            transparent: false,
+            transparent: true,
             side: THREE.DoubleSide,
+            opacity: 1,
           });
 
           const logo = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), logoMaterial);
           const imageMaterial = new THREE.MeshBasicMaterial({
             map: logoTexture,
             depthTest: false,
-            transparent: false,
-            opacity: 1,
+            transparent: true,
             side: THREE.DoubleSide,
-            alphaTest : 0.3,
           });
 
           const image = new THREE.Mesh(
