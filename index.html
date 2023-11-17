@@ -417,7 +417,6 @@
           }
 
           const textureLoader = new THREE.TextureLoader();
-
           const svgTexture = textureLoader.load(imageSrc);
           svgTexture.encoding = THREE.sRGBEncoding;
           const svgMaterial = new THREE.MeshBasicMaterial({
@@ -429,16 +428,10 @@
 
           // 3D 메시 생성
           const svgMesh = new THREE.Mesh(new THREE.PlaneGeometry(15, 15), svgMaterial); // 노드 크기를 조절
-
-
-
-
           const logoTexture = textureLoader.load(imageSrc);
           logoTexture.encoding = THREE.sRGBEncoding;
-
           logoTexture.wrapS = THREE.ClampToEdgeWrapping;
           logoTexture.wrapT = THREE.ClampToEdgeWrapping;
-
           const logoMaterial = new THREE.MeshBasicMaterial({
             map: logoTexture,
             depthTest: false,
@@ -447,8 +440,6 @@
           });
 
           const logo = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), logoMaterial);
-
-
           const imageMaterial = new THREE.MeshBasicMaterial({
             map: logoTexture,
             depthTest: false,
@@ -478,14 +469,11 @@
 
           const group = new THREE.Group();
           group.add(image);
-
           // if (nodeId === "수상") {
           //   group.position.set(-50, 0, 0); // 수정: 원하는 좌표로 변경
           // } else {
           //   group.position.set(50, 78, 0); // Default position
           // }
-
-
           return group;
         }
       })
@@ -604,7 +592,7 @@
     function showNaafaModal() {
       const modal = document.getElementById("NaafaModalBackground");
       modal.style.display = "flex";
-     Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
+      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
       window.addEventListener("click", hideNaafaModal);
     }
 
@@ -622,7 +610,7 @@
     function showFailerModal() {
       const modal = document.getElementById("FailerModalBackground");
       modal.style.display = "flex";
-    Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
+      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
       window.addEventListener("click", hideFailerModal);
     }
 
@@ -646,7 +634,7 @@
       }
 
 
-Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
+      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
       modal.style.display = "flex";
       window.addEventListener("click", hideNolgaModal);
     }
@@ -670,7 +658,7 @@ Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
     function showTtackModal() {
       const modal = document.getElementById("TtackModalBackground");
       modal.style.display = "flex";
-    Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
+      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
       window.addEventListener("click", hideTtackModal);
     }
 
@@ -679,7 +667,7 @@ Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
       event.stopPropagation();
       const modal = document.getElementById("TtackModalBackground");
       Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-       Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
+      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
       modal.style.display = "none";
     }
 
