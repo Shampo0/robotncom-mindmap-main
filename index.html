@@ -582,7 +582,7 @@
 
     const textureLoader = new THREE.TextureLoader();
     const backgroundTexture = textureLoader.load(
-      "low-angle-shot-of-the-mesmerizing-starry-sky.jpg"
+      "backimg.jpg"
     );
 
     Graph.renderer().setClearColor(new THREE.Color("rgba(0, 0, 0, 1)")); // Set alpha value (0.8 for 80% opacity)
@@ -602,7 +602,7 @@
       const modal = document.getElementById("NaafaModalBackground");
       Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
       modal.style.display = "none";
-    }
+    }a
 
     document.getElementById("closeNaafaModal").addEventListener("click", hideNaafaModal);
 
