@@ -569,17 +569,26 @@
       }
     });
 
+    window.addEventListener('modalOpen', () => {
+  isModalOpen = true;
+});
 
-    // camera orbit
-    let angle = 10;
-    setInterval(() => {
-      Graph.cameraPosition({
-        x: distance * Math.sin(angle),
-        z: distance * Math.cos(angle),
-      });
-      angle += Math.PI / 6500;
-    }, 10);
+window.addEventListener('modalClose', () => {
+  isModalOpen = false;
+});
+let angle = 15;
+let isModalOpen = false;
 
+// Camera orbit
+setInterval(() => {
+  if (!isModalOpen) {
+    Graph.cameraPosition({
+      x: distance * Math.sin(angle),
+      z: distance * Math.cos(angle),
+    });
+    angle += Math.PI / 6500;
+  }
+}, 10);
     const textureLoader = new THREE.TextureLoader();
     const backgroundTexture = textureLoader.load(
       "backimg.jpg"
@@ -590,111 +599,153 @@
     Graph.scene().background = backgroundTexture;
 
     function showNaafaModal() {
-      const modal = document.getElementById("NaafaModalBackground");
-      modal.style.display = "flex";
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      window.addEventListener("click", hideNaafaModal);
-    }
+  const modal = document.getElementById("NaafaModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hideNaafaModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
 
-    // Function to hide Naafa modal
-    function hideNaafaModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("NaafaModalBackground");
-      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
-      modal.style.display = "none";
-    }a
+// Function to hide Naafa modal
+function hideNaafaModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("NaafaModalBackground");
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event('modalClose'));
+}
 
-    document.getElementById("closeNaafaModal").addEventListener("click", hideNaafaModal);
+document
+  .getElementById("closeNaafaModal")
+  .addEventListener("click", hideNaafaModal);
 
-    // Function to show Failer modal
-    function showFailerModal() {
-      const modal = document.getElementById("FailerModalBackground");
-      modal.style.display = "flex";
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      window.addEventListener("click", hideFailerModal);
-    }
+// Function to show Failer modal
+function showFailerModal() {
+  const modal = document.getElementById("FailerModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hideFailerModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
 
-    // Function to hide Failer modal
-    function hideFailerModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("FailerModalBackground");
-      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
-      modal.style.display = "none";
-    }
+// Function to hide Failer modal
+function hideFailerModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("FailerModalBackground");
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event('modalClose'));
+}
 
-    document.getElementById("closeFailerModal").addEventListener("click", hideFailerModal);
+document
+  .getElementById("closeFailerModal")
+  .addEventListener("click", hideFailerModal);
 
-    // Function to show Nolga modal
-    function showNolgaModal() {
-      console.log("showNolgaModal function called");
-      const modal = document.getElementById("NolgaModalBackground");
-      if (!modal) {
-        console.error("NolgaModalBackground not found!");
-        return;
-      }
+// Function to show Nolga modal
+function showNolgaModal() {
+  console.log("showNolgaModal function called");
+  const modal = document.getElementById("NolgaModalBackground");
+  if (!modal) {
+    console.error("NolgaModalBackground not found!");
+    return;
+  }
+
+  modal.style.display = "flex";
+  window.addEventListener("click", hideNolgaModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
+
+// Function to hide Nolga modal
+function hideNolgaModal(event) {
+  event.stopPropagation();
+  console.log("Hide Nolga Modal");
+  const modal = document.getElementById("NolgaModalBackground");
+  if (!modal) {
+    console.error("NolgaModalBackground not found!");
+    return;
+  }
+
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event('modalClose'));
+}
+
+document
+  .getElementById("closeNolgaModal")
+  .addEventListener("click", hideNolgaModal);
+
+function showTtackModal() {
+  const modal = document.getElementById("TtackModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hideTtackModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
+
+// Function to hide Ttack modal
+function hideTtackModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("TtackModalBackground");
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event('modalClose'));
+}
+
+document
+  .getElementById("closeTtackModal")
+  .addEventListener("click", hideTtackModal);
+
+// Function to show Pay modal
+function showPayModal() {
+  const modal = document.getElementById("PayModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hidePayModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
+
+// Function to hide Pay modal
+function hidePayModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("PayModalBackground");
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event('modalClose'));
+}
+document
+  .getElementById("closePayModal")
+  .addEventListener("click", hidePayModal);
+
+// Function to show Team modal
+function showTeamModal() {
+  const modal = document.getElementById("TeamModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hideTeamModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event('modalOpen'));
+}
+
+// Function to hide Team modal
+function hideTeamModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("TeamModalBackground");
+  modal.style.display = "none";
+   // Dispatch modal close event
+   window.dispatchEvent(new Event('modalClose'));
+}
+document
+  .getElementById("closeTeamModal")
+  .addEventListener("click", hideTeamModal);
 
 
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      modal.style.display = "flex";
-      window.addEventListener("click", hideNolgaModal);
-    }
+window.showNaafaModal = showNaafaModal;
+window.showFailerModal = showFailerModal;
+window.showNolgaModal = showNolgaModal;
+window.showTtackModal = showTtackModal;
+window.showPayModal = showPayModal;
+window.showTeamModal = showTeamModal;
 
-    // Function to hide Nolga modal
-    function hideNolgaModal(event) {
-      event.stopPropagation();
-      console.log("Hide Nolga Modal");
-      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
-      const modal = document.getElementById("NolgaModalBackground");
-      if (!modal) {
-        console.error("NolgaModalBackground not found!");
-        return;
-      }
-
-      modal.style.display = "none";
-    }
-
-    document.getElementById("closeNolgaModal").addEventListener("click", hideNolgaModal);
-
-    function showTtackModal() {
-      const modal = document.getElementById("TtackModalBackground");
-      modal.style.display = "flex";
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      window.addEventListener("click", hideTtackModal);
-    }
-
-    // Function to hide Ttack modal
-    function hideTtackModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("TtackModalBackground");
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
-      modal.style.display = "none";
-    }
-
-    document.getElementById("closeTtackModal").addEventListener("click", hideTtackModal);
-
-    // Function to show Pay modal
-    function showPayModal() {
-      const modal = document.getElementById("PayModalBackground");
-      modal.style.display = "flex";
-      Graph.pauseAnimation(); // 애니메이션을 일시 중지합니다.
-      window.addEventListener("click", hidePayModal);
-    }
-
-    // Function to hide Pay modal
-    function hidePayModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("PayModalBackground");
-      Graph.resumeAnimation(); // 일시 중지된 애니메이션을 다시 시작합니다.
-      modal.style.display = "none";
-    }
-
-    document.getElementById("closePayModal").addEventListener("click", hidePayModal);
-    window.showNaafaModal = showNaafaModal;
-    window.showFailerModal = showFailerModal;
-    window.showNolgaModal = showNolgaModal;
-    window.showTtackModal = showTtackModal;
-    window.showPayModal = showPayModal;
 
     function getLinkForNode(nodeId) {
       const linkMap = {

@@ -572,15 +572,14 @@
 
     // camera orbit
     let angle = 10;
-setInterval(() => {
-  if (!isModalOpen) {
-    Graph.cameraPosition({
-      x: distance * Math.sin(angle),
-      z: distance * Math.cos(angle),
-    });
-    angle += Math.PI / 6500;
-  }
-}, 10);
+    setInterval(() => {
+      Graph.cameraPosition({
+        x: distance * Math.sin(angle),
+        z: distance * Math.cos(angle),
+      });
+      angle += Math.PI / 6500;
+    }, 10);
+
     const textureLoader = new THREE.TextureLoader();
     const backgroundTexture = textureLoader.load(
       "backimg.jpg"
@@ -595,7 +594,8 @@ let initialCameraPosition;
 let selectedNodePosition;
 let isModalOpen = false;
 let rotationInterval;
-let initialSpeed = 0.0001;
+let rotationAngle = 0;
+let initialSpeed = 0.0001; // 초기 속도 변수 추가
 
 function disableRotation() {
   rotationEnabled = false;
@@ -608,46 +608,38 @@ function enableRotation() {
 
   rotationInterval = setInterval(() => {
     if (!isModalOpen) {
-      angle += initialSpeed;
+      rotationAngle += initialSpeed;
       Graph.cameraPosition({
-        x: distance * Math.sin(angle),
-        z: distance * Math.cos(angle),
+        x: distance * Math.sin(rotationAngle),
+        z: distance * Math.cos(rotationAngle),
       });
-      initialSpeed += 0.0000001; // 일정한 속도로 증가
     }
   }, 10);
 }
-
-function showNaafaModal() {
+  Graph.onEngineTick(() => {
+  if (!isModalOpen) {
+    rotationAngle += Math.PI / 6500;
+    Graph.cameraPosition({
+      x: distance * Math.sin(rotationAngle),
+      z: distance * Math.cos(rotationAngle),
+    });
+  }
+});
+function showNaafaModal(node) {
   const modal = document.getElementById("NaafaModalBackground");
   modal.style.display = "flex";
+  disableRotation();
+  initialCameraPosition = Graph.cameraPosition();
   window.addEventListener("click", hideNaafaModal);
-  // Dispatch modal open event
-  window.dispatchEvent(new Event('modalOpen'));
+  Graph.pauseAnimation();
+  isModalOpen = true;
 }
-
-// Function to hide Naafa modal
-function hideNaafaModal(event) {
-  event.stopPropagation();
-  const modal = document.getElementById("NaafaModalBackground");
-  modal.style.display = "none";
-  // Dispatch modal close event
-  window.dispatchEvent(new Event('modalClose'));
-}
-
-document
-  .getElementById("closeNaafaModal")
-  .addEventListener("click", hideNaafaModal);
 
 function hideNaafaModal(event) {
   event.stopPropagation();
   const modal = document.getElementById("NaafaModalBackground");
   Graph.resumeAnimation();
   modal.style.display = "none";
-  if (selectedNodePosition && !isModalOpen) {
-    Graph.cameraPosition(selectedNodePosition);
-    selectedNodePosition = null;
-  }
   enableRotation();
   isModalOpen = false;
 }
@@ -655,16 +647,14 @@ function hideNaafaModal(event) {
 document.getElementById("closeNaafaModal").addEventListener("click", hideNaafaModal);
 
 Graph.onEngineTick(() => {
-  if (rotationEnabled) {
+  if (!isModalOpen) {
+    rotationAngle += Math.PI / 6500;
     Graph.cameraPosition({
-      x: distance * Math.sin(angle),
-      z: distance * Math.cos(angle),
+      x: distance * Math.sin(rotationAngle),
+      z: distance * Math.cos(rotationAngle),
     });
   }
 });
-
-    document.getElementById("closeNaafaModal").addEventListener("click", hideNaafaModal);
-
     // Function to show Failer modal
     function showFailerModal() {
       const modal = document.getElementById("FailerModalBackground");
