@@ -35,33 +35,32 @@
     }
 
     #closeNaafaModal,
-    #closeFailerModal,
-    #closeNolgaModal,
-    #closeTtackModal,
-    #closePayModal,
-    #closeTeamModal {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      /* Updated to move the close button to the right */
-      font-size: 20px;
-      cursor: pointer;
-      background-color: #d9d9d950;
-      border-radius: 50%;
-      width: 30px;
-      /* Set width and height to create a circular shape */
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      color: #fff;
-      /* Set the color of the 'x' */
-      border: none;
-      outline: none;
-      text-align: center;
-    }
-
+  #closeFailerModal,
+  #closeNolgaModal,
+  #closeTtackModal,
+  #closePayModal,
+  #closeTeamModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Updated to move the close button to the right */
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #d9d9d950;
+    border-radius: 50%;
+    width: 30px;
+    /* Set width and height to create a circular shape */
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: #fff;
+    /* Set the color of the 'x' */
+    border: none;
+    outline: none;
+    text-align: center;
+  }
     .image-container {
       display: flex;
       justify-content: flex-end;
@@ -354,7 +353,7 @@
       </div>
     </div>
   </div>
-  <div id="TeamModalBackground" style="
+          <div id="TeamModalBackground" style="
         height: 100vh;
         width: 100vw;
         position: fixed;
@@ -363,484 +362,476 @@
         align-items: center;
         z-index: 100;
       ">
-    <div id="TeamModal" class="modal">
-      <span id="closeTeamModal">&times;</span>
-      <div style="flex: 1">
-        <div>
-          <img src="p.png" alt="Your Image" style="margin-right: 10px" />
-          <img src="w.png" alt="Your Image" />
-          <p style="
+            <div id="TeamModal" class="modal">
+              <span id="closeTeamModal">&times;</span>
+              <div style="flex: 1">
+                <div>
+                  <img src="p.png" alt="Your Image" style="margin-right: 10px" />
+                  <img src="w.png" alt="Your Image" />
+                  <p style="
                 float: right;
                 color: rgba(255, 255, 255, 0.822);
                 margin-right: 10px;
               ">
-            Platfrom 05
-          </p>
-        </div>
+                    Platfrom 05
+                  </p>
+                </div>
 
-        <h1>팀플로우 TeamFlow</h1>
-        <p>팀플로우는 가나다라마바사아자차카타파하</p>
-      </div>
-      <div class="image-container">
-        <div>
-          <img src="Teamwork2.svg" alt="Moonjapay Image" style="width: 38%;" />
-        </div>
-      </div>
-      <div style="width: 35%">
-        <button class="custom-button" onclick="showTeamModal()">
-          팀플로우 기능 1
-        </button>
-        <button class="custom-button" onclick="showTeamModal()">
-          팀플로우 기능 2
-        </button>
-        <button class="custom-button" onclick="showTeamModal()">
-          팀플로우 기능 3
-        </button>
-        <button class="custom-button" onclick="showTeamModal()">
-          팀플로우 기능 4
-        </button>
-      </div>
-    </div>
-  </div>
+                <h1>팀플로우 TeamFlow</h1>
+                <p>팀플로우는 가나다라마바사아자차카타파하</p>
+              </div>
+              <div class="image-container">
+                <div>
+                  <img src="Teamwork2.svg" alt="Moonjapay Image" style="width: 38%;" />
+                </div>
+              </div>
+              <div style="width: 35%">
+                <button class="custom-button" onclick="showTeamModal()">
+                  팀플로우 기능 1
+                </button>
+                <button class="custom-button" onclick="showTeamModal()">
+                  팀플로우 기능 2
+                </button>
+                <button class="custom-button" onclick="showTeamModal()">
+                  팀플로우 기능 3
+                </button>
+                <button class="custom-button" onclick="showTeamModal()">
+                  팀플로우 기능 4
+                </button>
+              </div>
+            </div>
+          </div>
+  
 
+          <div id="3d-graph"></div>
+          <script>
+            const distance = 245;
 
-  <div id="3d-graph"></div>
-  <script>
-    const distance = 245;
+            const nodeImages = {
+              1: "logo.svg",
+              2: {
+                Platform: "Platform.svg",
+                technology: "SI.svg",
+                SNS: "SNS.svg",
+                Awards: "Win.svg",
+              },
+              3: {
+                Failertalk: "Failertalk.svg",
+                Ttagttaguli: "Ttakttaguri.svg",
+                naafaa: "Naafaa.svg",
+                moonjapay: "Moonjapay.svg",
+                nolga: "Nolga.svg",
+                TeamWork: "Teamwork.svg",
+                "server solution": "Server.svg",
+                "security solutions": "Security.svg",
+                "network solutions": "Network.svg",
+                "Computer HW": "Hardware.svg",
+                "Voice Infrastructure": "Voiceinfra.svg",
+                "Computer SW": "Software.svg",
+                Instagram: "Insta.svg",
+                homepage: "Homepage.svg",
+                "naver blog": "Blog.svg",
+                kakaotalk: "Kakao.svg",
+                "MSS Ministry's Business Innovation Award": "Win.svg",
+                "Korea Engineer Award": "Win.svg",
+                "Top 100 Korean Brand Award [IT Platform]": "Win.svg",
+              },
+            };
 
-    const nodeImages = {
-      1: "logo.svg",
-      2: {
-        Platform: "Platform.svg",
-        technology: "SI.svg",
-        SNS: "SNS.svg",
-        Awards: "Win.svg",
-      },
-      3: {
-        Failertalk: "Failertalk.svg",
-        Ttagttaguli: "Ttakttaguri.svg",
-        naafaa: "Naafaa.svg",
-        moonjapay: "Moonjapay.svg",
-        nolga: "Nolga.svg",
-        TeamWork: "Teamwork.svg",
-        "server solution": "Server.svg",
-        "security solutions": "Security.svg",
-        "network solutions": "Network.svg",
-        "Computer HW": "Hardware.svg",
-        "Voice Infrastructure": "Voiceinfra.svg",
-        "Computer SW": "Software.svg",
-        Instagram: "Insta.svg",
-        homepage: "Homepage.svg",
-        "naver blog": "Blog.svg",
-        kakaotalk: "Kakao.svg",
-        "MSS Ministry's Business Innovation Award": "Win.svg",
-        "Korea Engineer Award": "Win.svg",
-        "Top 100 Korean Brand Award [IT Platform]": "Win.svg",
-      },
-    };
+            const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
+              .jsonUrl("../datasets/miserables.json")
+              .nodeLabel("id")
+              .nodeAutoColorBy("group")
+              .enableNavigationControls(false)
+              .enableNodeDrag(true)
+              .onNodeClick((node) => {
+                const nodeId = node.id;
+                if (nodeImages[node.group]) {
+                  const imageSrc = nodeImages[node.group];
+                  if (typeof imageSrc === "object" && imageSrc[nodeId]) {
+                    // You can add any action you want when a node is clicked
+                    console.log(`Node "${nodeId}" clicked!`);
+                  }
+                }
+              })
+              
+              .nodeThreeObject((node) => {
+                const groupId = node.group;
+                const nodeId = node.id;
+                
+                if (nodeImages[groupId]) {
+                  let imageSrc = nodeImages[groupId];
 
-    const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
-      .jsonUrl("../datasets/miserables.json")
-      .nodeLabel("id")
-      .nodeAutoColorBy("group")
-      .enableNavigationControls(false)
-      .enableNodeDrag(true)
-      .onNodeClick((node) => {
-        const nodeId = node.id;
-        if (nodeImages[node.group]) {
-          const imageSrc = nodeImages[node.group];
-          if (typeof imageSrc === "object" && imageSrc[nodeId]) {
-            // You can add any action you want when a node is clicked
-            console.log(`Node "${nodeId}" clicked!`);
-          }
-        }
-      })
+                  if (typeof imageSrc === "object" && imageSrc[nodeId]) {
+                    imageSrc = imageSrc[nodeId];
+                  }
 
-      .nodeThreeObject((node) => {
-        const groupId = node.group;
-        const nodeId = node.id;
-        const isRobotNcom = node.id === "RobotNcom";
-    node.enableDrag = !isRobotNcom;
-        if (nodeImages[groupId]) {
-          let imageSrc = nodeImages[groupId];
+                  const textureLoader = new THREE.TextureLoader();
+                  const svgTexture = textureLoader.load(imageSrc);
+                  svgTexture.encoding = THREE.sRGBEncoding;
+                  const svgMaterial = new THREE.MeshBasicMaterial({
+                    map: svgTexture,
+                    depthTest: false,
+                    transparent: true,
+                    side: THREE.DoubleSide,
+                  });
+                  // Graph.onEngineTick(() => {
+                  //   const nodes = Graph.graphData().nodes;
 
-          if (typeof imageSrc === "object" && imageSrc[nodeId]) {
-            imageSrc = imageSrc[nodeId];
-          }
+                  //   for (let i = 0; i < nodes.length; i++) {
+                  //     const currentNode = nodes[i];
 
-          const textureLoader = new THREE.TextureLoader();
-          const svgTexture = textureLoader.load(imageSrc);
-          svgTexture.encoding = THREE.sRGBEncoding;
-          const svgMaterial = new THREE.MeshBasicMaterial({
-            map: svgTexture,
-            depthTest: false,
-            transparent: true,
-            side: THREE.DoubleSide,
-          });
-          // Graph.onEngineTick(() => {
-          //   const nodes = Graph.graphData().nodes;
+                  //     for (let j = 0; j < nodes.length; j++) {
+                  //       if (i !== j) {
+                  //         const otherNode = nodes[j];
 
-          //   for (let i = 0; i < nodes.length; i++) {
-          //     const currentNode = nodes[i];
+                  //         // 충돌 검사
+                  //         const distance = Math.hypot(currentNode.x - otherNode.x, currentNode.y - otherNode.y);
+                  //         const minDistance = 30; // 노드 간의 최소 거리
 
-          //     for (let j = 0; j < nodes.length; j++) {
-          //       if (i !== j) {
-          //         const otherNode = nodes[j];
+                  //         if (distance < minDistance) {
+                  //           // 충돌이 감지되면 해당 노드를 랜덤한 방향으로 이동시킴
+                  //           const angle = Math.random() * Math.PI * 2;
+                  //           const moveDistance = minDistance - distance;
 
-          //         // 충돌 검사
-          //         const distance = Math.hypot(currentNode.x - otherNode.x, currentNode.y - otherNode.y);
-          //         const minDistance = 30; // 노드 간의 최소 거리
+                  //           currentNode.x += moveDistance * Math.cos(angle);
+                  //           currentNode.y += moveDistance * Math.sin(angle);
+                  //         }
+                  //       }
+                  //     }
+                  //   }
+                  // });
+                    
+                  // 3D 메시 생성
+                  const svgMesh = new THREE.Mesh(new THREE.PlaneGeometry(15, 15), svgMaterial); // 노드 크기를 조절
+                  const logoTexture = textureLoader.load(imageSrc);
+                  logoTexture.encoding = THREE.sRGBEncoding;
+                  logoTexture.wrapS = THREE.ClampToEdgeWrapping;
+                  logoTexture.wrapT = THREE.ClampToEdgeWrapping;
+                  const logoMaterial = new THREE.MeshBasicMaterial({
+                    map: logoTexture,
+                    depthTest: false,
+                    transparent: true,
+                    side: THREE.DoubleSide,
+                  });
 
-          //         if (distance < minDistance) {
-          //           // 충돌이 감지되면 해당 노드를 랜덤한 방향으로 이동시킴
-          //           const angle = Math.random() * Math.PI * 2;
-          //           const moveDistance = minDistance - distance;
+                  const logo = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), logoMaterial);
+                  const imageMaterial = new THREE.MeshBasicMaterial({
+                    map: logoTexture,
+                    depthTest: false,
+                    transparent: true,
+                    // alphaTest : 0.3,
+                    opacity: 1,
+                    side: THREE.DoubleSide,
+                  });
 
-          //           currentNode.x += moveDistance * Math.cos(angle);
-          //           currentNode.y += moveDistance * Math.sin(angle);
-          //         }
-          //       }
-          //     }
-          //   }
-          // });
+                  const image = new THREE.Mesh(
+                    new THREE.PlaneGeometry(17, 17),
+                    imageMaterial
+                  );
 
-          // 3D 메시 생성
-          const svgMesh = new THREE.Mesh(new THREE.PlaneGeometry(15, 15), svgMaterial); // 노드 크기를 조절
-          const logoTexture = textureLoader.load(imageSrc);
-          logoTexture.encoding = THREE.sRGBEncoding;
-          logoTexture.wrapS = THREE.ClampToEdgeWrapping;
-          logoTexture.wrapT = THREE.ClampToEdgeWrapping;
-          const logoMaterial = new THREE.MeshBasicMaterial({
-            map: logoTexture,
-            depthTest: false,
-            transparent: true,
-            side: THREE.DoubleSide,
-          });
+                  image.onBeforeRender = function (
+                    renderer,
+                    scene,
+                    camera,
+                    geometry,
+                    material,
+                    group
+                  ) {
+                    const euler = new THREE.Euler();
+                    euler.copy(camera.rotation);
+                    image.rotation.set(euler.x, euler.y, euler.z);
+                  };
 
-          const logo = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), logoMaterial);
-          const imageMaterial = new THREE.MeshBasicMaterial({
-            map: logoTexture,
-            depthTest: false,
-            transparent: true,
-            // alphaTest : 0.3,
-            opacity: 1,
-            side: THREE.DoubleSide,
-          });
+                  const group = new THREE.Group();
+                  group.add(image);
+                  // if (nodeId === "수상") {
+                  //   group.position.set(-50, 0, 0); // 수정: 원하는 좌표로 변경
+                  // } else {
+                  //   group.position.set(50, 78, 0); // Default position
+                  // }
+                  return group;
+                } 
+              })
+              .onEngineTick(() => {
+                Graph.graphData().nodes.forEach((n) => {
+                  if (n.id === "RobotNcom") {
+                    n.__threeObj.scale.set(4, 4, 4);
+                  } else if (["Platform", "technology", "Awards", "SNS"].includes(n.id)) {
+                    n.__threeObj.scale.set(2, 2, 2);
+                  }
+                });
+              });
 
-          const image = new THREE.Mesh(
-            new THREE.PlaneGeometry(17, 17),
-            imageMaterial
-          );
+            window.addEventListener("resize", () => {
+              const graphContainer = document.getElementById("3d-graph");
+              Graph.width(graphContainer.offsetWidth).height(
+                graphContainer.offsetHeight
+              );
+            });
 
-          image.onBeforeRender = function (
-            renderer,
-            scene,
-            camera,
-            geometry,
-            material,
-            group
-          ) {
-            const euler = new THREE.Euler();
-            euler.copy(camera.rotation);
-            image.rotation.set(euler.x, euler.y, euler.z);
-          };
+            // Function to zoom in to a node
+            function zoomInToNode(node) {
+              const distance = 40;
+              const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
 
-          const group = new THREE.Group();
-          group.add(image);
-          // if (nodeId === "수상") {
-          //   group.position.set(-50, 0, 0); // 수정: 원하는 좌표로 변경
-          // } else {
-          //   group.position.set(50, 78, 0); // Default position
-          // }
-          return group;
-        }
-      })
-      .onEngineTick(() => {
-        Graph.graphData().nodes.forEach((n) => {
-          if (n.id === "RobotNcom") {
-            // 노드의 위치를 고정시킴
-            n.fx = n.x;
-            n.fy = n.y;
-            n.fz = n.z;
-
-            // 노드의 크기를 조절함
-            n.__threeObj.scale.set(4, 4, 4);
-
-          } else if (["Platform", "technology", "Awards", "SNS"].includes(n.id)) {
-            n.__threeObj.scale.set(2, 2, 2);
-          }
-        });
-      });
-
-    window.addEventListener("resize", () => {
-      const graphContainer = document.getElementById("3d-graph");
-      Graph.width(graphContainer.offsetWidth).height(
-        graphContainer.offsetHeight
-      );
-    });
-
-    // Function to zoom in to a node
-    function zoomInToNode(node) {
-      const distance = 40;
-      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-
-      Graph.cameraPosition(
-        {
-          x: node.x * distRatio,
-          y: node.y * distRatio,
-          z: node.z * distRatio,
-        },
-        node,
-        3000
-      );
-    }
+              Graph.cameraPosition(
+                {
+                  x: node.x * distRatio,
+                  y: node.y * distRatio,
+                  z: node.z * distRatio,
+                },
+                node,
+                3000
+              );
+            }
 
 
 
-    Graph.onNodeClick((node) => {
-      console.log("Node clicked:", node);
-      const nodeId = node.id;
-      const nodeGroup = node.group;
-      console.log(`Clicked Node: ${nodeId}, Group: ${nodeGroup}`);
-      if (nodeImages[nodeGroup]) {
-        const imageSrc = nodeImages[nodeGroup];
-        if (typeof imageSrc === "object" && imageSrc[nodeId]) {
-          console.log(`Node "${nodeId}" clicked!`);
+            Graph.onNodeClick((node) => {
+              console.log("Node clicked:", node);
+              const nodeId = node.id;
+              const nodeGroup = node.group;
+              console.log(`Clicked Node: ${nodeId}, Group: ${nodeGroup}`);
+              if (nodeImages[nodeGroup]) {
+                const imageSrc = nodeImages[nodeGroup];
+                if (typeof imageSrc === "object" && imageSrc[nodeId]) {
+                  console.log(`Node "${nodeId}" clicked!`);
 
-          switch (nodeId) {
-            case "naafaa":
-              console.log("Calling showNaafaModal");
-              showNaafaModal();
-              break;
-            case "Failertalk":
-              console.log("Calling showFailerModal");
-              showFailerModal();
-              break;
-            case "nolga":
-              console.log("Calling showNolgaModal");
-              showNolgaModal();
-              break;
-            case "Ttagttaguli":
-              console.log("Calling showTtackModal");
-              showTtackModal();
-              break;
-            case "moonjapay":
-              console.log("Calling showPayModal");
-              showPayModal();
-              break;
-            case "TeamWork":
-              console.log("Calling showTeamModal");
-              showTeamModal();
-              break;
-            default:
-              break;
-          }
+                  switch (nodeId) {
+                    case "naafaa":
+                      console.log("Calling showNaafaModal");
+                      showNaafaModal();
+                      break;
+                    case "Failertalk":
+                      console.log("Calling showFailerModal");
+                      showFailerModal();
+                      break;
+                    case "nolga":
+                      console.log("Calling showNolgaModal");
+                      showNolgaModal();
+                      break;
+                    case "Ttagttaguli":
+                      console.log("Calling showTtackModal");
+                      showTtackModal();
+                      break;
+                    case "moonjapay":
+                      console.log("Calling showPayModal");
+                      showPayModal();
+                      break;
+                    case "TeamWork":
+                      console.log("Calling showTeamModal");
+                      showTeamModal();
+                      break;
+                    default:
+                      break;
+                  }
 
-          return;
-        }
-      }
+                  return;
+                }
+              }
 
-      if (nodeGroup === 3) {
-        switch (nodeId) {
-          case "Instagram":
-          case "homepage":
-          case "naver blog":
-          case "kakaotalk":
-            console.log(`Opening link for ${nodeId}`);
-            window.open(getLinkForNode(nodeId), "_blank");
-            break;
-          default:
-            break;
-        }
-      }
-    });
+              if (nodeGroup === 3) {
+                switch (nodeId) {
+                  case "Instagram":
+                  case "homepage":
+                  case "naver blog":
+                  case "kakaotalk":
+                    console.log(`Opening link for ${nodeId}`);
+                    window.open(getLinkForNode(nodeId), "_blank");
+                    break;
+                  default:
+                    break;
+                }
+              }
+            });
 
-    window.addEventListener('modalOpen', () => {
-      isModalOpen = true;
-    });
+            window.addEventListener('modalOpen', () => {
+              isModalOpen = true;
+            });
 
-    window.addEventListener('modalClose', () => {
-      isModalOpen = false;
-    });
-    let angle = 15;
-    let isModalOpen = false;
+            window.addEventListener('modalClose', () => {
+              isModalOpen = false;
+            });
+            let angle = 15;
+            let isModalOpen = false;
 
-    // Camera orbit
-    setInterval(() => {
-      if (!isModalOpen) {
-        Graph.cameraPosition({
-          x: distance * Math.sin(angle),
-          z: distance * Math.cos(angle),
-        });
-        angle += Math.PI / 6500;
-      }
-    }, 10);
-    const textureLoader = new THREE.TextureLoader();
-    const backgroundTexture = textureLoader.load(
-      "backimg.jpg"
-    );
+            // Camera orbit
+            setInterval(() => {
+              if (!isModalOpen) {
+                Graph.cameraPosition({
+                  x: distance * Math.sin(angle),
+                  z: distance * Math.cos(angle),
+                });
+                angle += Math.PI / 6500;
+              }
+            }, 10);
+            const textureLoader = new THREE.TextureLoader();
+            const backgroundTexture = textureLoader.load(
+              "backimg.jpg"
+            );
 
-    Graph.renderer().setClearColor(new THREE.Color("rgba(0, 0, 0, 1)")); // Set alpha value (0.8 for 80% opacity)
-    backgroundTexture.minFilter = THREE.NearestFilter;
-    Graph.scene().background = backgroundTexture;
+            Graph.renderer().setClearColor(new THREE.Color("rgba(0, 0, 0, 1)")); // Set alpha value (0.8 for 80% opacity)
+            backgroundTexture.minFilter = THREE.NearestFilter;
+            Graph.scene().background = backgroundTexture;
 
-    function showNaafaModal() {
-      const modal = document.getElementById("NaafaModalBackground");
-      modal.style.display = "flex";
-      window.addEventListener("click", hideNaafaModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+            function showNaafaModal() {
+              const modal = document.getElementById("NaafaModalBackground");
+              modal.style.display = "flex";
+              window.addEventListener("click", hideNaafaModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Naafa modal
-    function hideNaafaModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("NaafaModalBackground");
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
+            // Function to hide Naafa modal
+            function hideNaafaModal(event) {
+              event.stopPropagation();
+              const modal = document.getElementById("NaafaModalBackground");
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
 
-    document
-      .getElementById("closeNaafaModal")
-      .addEventListener("click", hideNaafaModal);
+            document
+              .getElementById("closeNaafaModal")
+              .addEventListener("click", hideNaafaModal);
 
-    // Function to show Failer modal
-    function showFailerModal() {
-      const modal = document.getElementById("FailerModalBackground");
-      modal.style.display = "flex";
-      window.addEventListener("click", hideFailerModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+            // Function to show Failer modal
+            function showFailerModal() {
+              const modal = document.getElementById("FailerModalBackground");
+              modal.style.display = "flex";
+              window.addEventListener("click", hideFailerModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Failer modal
-    function hideFailerModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("FailerModalBackground");
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
+            // Function to hide Failer modal
+            function hideFailerModal(event) {
+              event.stopPropagation();
+              const modal = document.getElementById("FailerModalBackground");
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
 
-    document
-      .getElementById("closeFailerModal")
-      .addEventListener("click", hideFailerModal);
+            document
+              .getElementById("closeFailerModal")
+              .addEventListener("click", hideFailerModal);
 
-    // Function to show Nolga modal
-    function showNolgaModal() {
-      console.log("showNolgaModal function called");
-      const modal = document.getElementById("NolgaModalBackground");
-      if (!modal) {
-        console.error("NolgaModalBackground not found!");
-        return;
-      }
+            // Function to show Nolga modal
+            function showNolgaModal() {
+              console.log("showNolgaModal function called");
+              const modal = document.getElementById("NolgaModalBackground");
+              if (!modal) {
+                console.error("NolgaModalBackground not found!");
+                return;
+              }
 
-      modal.style.display = "flex";
-      window.addEventListener("click", hideNolgaModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+              modal.style.display = "flex";
+              window.addEventListener("click", hideNolgaModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Nolga modal
-    function hideNolgaModal(event) {
-      event.stopPropagation();
-      console.log("Hide Nolga Modal");
-      const modal = document.getElementById("NolgaModalBackground");
-      if (!modal) {
-        console.error("NolgaModalBackground not found!");
-        return;
-      }
+            // Function to hide Nolga modal
+            function hideNolgaModal(event) {
+              event.stopPropagation();
+              console.log("Hide Nolga Modal");
+              const modal = document.getElementById("NolgaModalBackground");
+              if (!modal) {
+                console.error("NolgaModalBackground not found!");
+                return;
+              }
 
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
 
-    document
-      .getElementById("closeNolgaModal")
-      .addEventListener("click", hideNolgaModal);
+            document
+              .getElementById("closeNolgaModal")
+              .addEventListener("click", hideNolgaModal);
 
-    function showTtackModal() {
-      const modal = document.getElementById("TtackModalBackground");
-      modal.style.display = "flex";
-      window.addEventListener("click", hideTtackModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+            function showTtackModal() {
+              const modal = document.getElementById("TtackModalBackground");
+              modal.style.display = "flex";
+              window.addEventListener("click", hideTtackModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Ttack modal
-    function hideTtackModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("TtackModalBackground");
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
+            // Function to hide Ttack modal
+            function hideTtackModal(event) {
+              event.stopPropagation();
+              const modal = document.getElementById("TtackModalBackground");
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
 
-    document
-      .getElementById("closeTtackModal")
-      .addEventListener("click", hideTtackModal);
+            document
+              .getElementById("closeTtackModal")
+              .addEventListener("click", hideTtackModal);
 
-    // Function to show Pay modal
-    function showPayModal() {
-      const modal = document.getElementById("PayModalBackground");
-      modal.style.display = "flex";
-      window.addEventListener("click", hidePayModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+            // Function to show Pay modal
+            function showPayModal() {
+              const modal = document.getElementById("PayModalBackground");
+              modal.style.display = "flex";
+              window.addEventListener("click", hidePayModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Pay modal
-    function hidePayModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("PayModalBackground");
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
-    document
-      .getElementById("closePayModal")
-      .addEventListener("click", hidePayModal);
+            // Function to hide Pay modal
+            function hidePayModal(event) {
+              event.stopPropagation();
+              const modal = document.getElementById("PayModalBackground");
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
+            document
+              .getElementById("closePayModal")
+              .addEventListener("click", hidePayModal);
 
-    function showTeamModal() {
-      const modal = document.getElementById("TeamModalBackground");
-      modal.style.display = "flex";
-      window.addEventListener("click", hideTeamModal);
-      // Dispatch modal open event
-      window.dispatchEvent(new Event('modalOpen'));
-    }
+            function showTeamModal() {
+              const modal = document.getElementById("TeamModalBackground");
+              modal.style.display = "flex";
+              window.addEventListener("click", hideTeamModal);
+              // Dispatch modal open event
+              window.dispatchEvent(new Event('modalOpen'));
+            }
 
-    // Function to hide Team modal
-    function hideTeamModal(event) {
-      event.stopPropagation();
-      const modal = document.getElementById("TeamModalBackground");
-      modal.style.display = "none";
-      // Dispatch modal close event
-      window.dispatchEvent(new Event('modalClose'));
-    }
-    document
-      .getElementById("closeTeamModal")
-      .addEventListener("click", hideTeamModal);
+            // Function to hide Team modal
+            function hideTeamModal(event) {
+              event.stopPropagation();
+              const modal = document.getElementById("TeamModalBackground");
+              modal.style.display = "none";
+              // Dispatch modal close event
+              window.dispatchEvent(new Event('modalClose'));
+            }
+            document
+              .getElementById("closeTeamModal")
+              .addEventListener("click", hideTeamModal);
 
-    window.showNaafaModal = showNaafaModal;
-    window.showFailerModal = showFailerModal;
-    window.showNolgaModal = showNolgaModal;
-    window.showTtackModal = showTtackModal;
-    window.showPayModal = showPayModal;
-    window.showTeamModal = showTeamModal;
+            window.showNaafaModal = showNaafaModal;
+            window.showFailerModal = showFailerModal;
+            window.showNolgaModal = showNolgaModal;
+            window.showTtackModal = showTtackModal;
+            window.showPayModal = showPayModal;
+            window.showTeamModal = showTeamModal;
 
 
-    function getLinkForNode(nodeId) {
-      const linkMap = {
-        "Instagram": "https://www.instagram.com/robot_n_com/",
-        "homepage": "https://www.robotncom.com/",
-        "naver blog": "https://blog.naver.com/robotncom",
-        "kakaotalk": "http://pf.kakao.com/_VMxcds",
-      };
-      return linkMap[nodeId] || "#";
-    }
-  </script>
+            function getLinkForNode(nodeId) {
+              const linkMap = {
+                "Instagram": "https://www.instagram.com/robot_n_com/",
+                "homepage": "https://www.robotncom.com/",
+                "naver blog": "https://blog.naver.com/robotncom",
+                "kakaotalk": "http://pf.kakao.com/_VMxcds",
+              };
+              return linkMap[nodeId] || "#";
+            }
+          </script>
 </body>
 
 </html>
