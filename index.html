@@ -404,7 +404,6 @@
   
 
           <div id="3d-graph"></div>
-
           <script>
             const distance = 245;
 
@@ -444,7 +443,7 @@
               .nodeLabel("id")
               .nodeAutoColorBy("group")
               .enableNavigationControls(false)
-              .enableNodeDrag(false)
+              .enableNodeDrag(true)
               .onNodeClick((node) => {
                 const nodeId = node.id;
                 if (nodeImages[node.group]) {
@@ -455,11 +454,11 @@
                   }
                 }
               })
-
+              
               .nodeThreeObject((node) => {
                 const groupId = node.group;
                 const nodeId = node.id;
-
+                
                 if (nodeImages[groupId]) {
                   let imageSrc = nodeImages[groupId];
 
@@ -502,7 +501,7 @@
                   //     }
                   //   }
                   // });
-
+                    
                   // 3D 메시 생성
                   const svgMesh = new THREE.Mesh(new THREE.PlaneGeometry(15, 15), svgMaterial); // 노드 크기를 조절
                   const logoTexture = textureLoader.load(imageSrc);
@@ -552,7 +551,7 @@
                   //   group.position.set(50, 78, 0); // Default position
                   // }
                   return group;
-                }
+                } 
               })
               .onEngineTick(() => {
                 Graph.graphData().nodes.forEach((n) => {
@@ -591,12 +590,9 @@
 
             Graph.onNodeClick((node) => {
               console.log("Node clicked:", node);
-
               const nodeId = node.id;
               const nodeGroup = node.group;
-
               console.log(`Clicked Node: ${nodeId}, Group: ${nodeGroup}`);
-
               if (nodeImages[nodeGroup]) {
                 const imageSrc = nodeImages[nodeGroup];
                 if (typeof imageSrc === "object" && imageSrc[nodeId]) {
