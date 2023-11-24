@@ -4,7 +4,7 @@
 
       {"id": "Platform", "group": 2},
       {"id": "Failertalk", "group": 3},
-      {"id": "Ttagttaguli", "group": 3},
+      {"id": "ttakttaguri", "group": 3},
       {"id": "naafaa", "group": 3},
       {"id": "moonjapay", "group": 3},
       {"id": "nolga", "group": 3},
@@ -33,7 +33,7 @@
     "links": [
       {"source": "Platform", "target": "RobotNcom", "value": 1},
       {"source": "Failertalk", "target": "Platform", "value": 2},
-      {"source": "Ttagttaguli", "target": "Platform", "value": 2},
+      {"source": "ttakttaguri", "target": "Platform", "value": 2},
       {"source": "naafaa", "target": "Platform", "value": 2},
       {"source": "moonjapay", "target": "Platform", "value": 2},
       {"source": "nolga", "target": "Platform", "value": 2},
