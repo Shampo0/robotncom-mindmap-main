@@ -17,7 +17,8 @@
 
     {"id": "Introduction", "group": 2},
     {"id": "history", "group": 3},
-    {"id": "Our Competence", "group": 3}
+    {"id": "Our Competence", "group": 3},
+    {"id": "CompanyIntroduction", "group": 3}
   ],
   "links": [
     {"source": "Platform", "target": "RobotNcom", "value": 1},
@@ -35,6 +36,7 @@
 
     {"source": "Introduction", "target": "RobotNcom", "value": 1},
     {"source": "history", "target": "Introduction", "value": 2},
-    {"source": "Our Competence", "target": "Introduction", "value": 2}    
+    {"source": "Our Competence", "target": "Introduction", "value": 2},    
+    {"source": "CompanyIntroduction", "target": "Introduction", "value": 2}    
   ]
 }

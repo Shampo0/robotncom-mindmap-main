@@ -40,6 +40,7 @@ body {
 #closeSWHWModal,
 #closeICTModal,
 #closeVoiceModal
+#closeIntroductionModal
 {
   position: absolute;
   top: 10px;

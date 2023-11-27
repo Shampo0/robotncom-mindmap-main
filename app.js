@@ -31,6 +31,7 @@ const nodeImages = {
     ICT: "image/ict.svg",
     history: "image/history.svg",
     "Our Competence": "image/competence.svg",
+    "CompanyIntroduction" : "image/competence.svg"
   },
 };
 
@@ -73,6 +74,7 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
         "ICT",
         "history",
         "Our Competence",
+        "CompanyIntroduction"
       ].includes(node.id)
     ) {
       const targetNodes = ["RobotNcom"];
@@ -141,6 +143,9 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
         case "Voice Infrastructure":
             showVoiceModal();
             break;
+        case "CompanyIntroduction":
+            showIntroductionModalModal();
+            break;
         default:
           break;
       }
@@ -207,7 +212,7 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
     const centralNode = graphData.nodes.find((n) => n.id === "RobotNcom");
     const techNode = graphData.nodes.find((n) => n.id === "technology");
     const platformNode = graphData.nodes.find((n) => n.id === "Platform");
-    const introNode = graphData.nodes.find((n) => n.id === "Introduction");
+    const introNode = graphData.nodes.find((n) => n.id === "`Introduction`");
 
     if (centralNode && techNode && platformNode && introNode) {
       centralNode.__threeObj.scale.set(4, 4, 4);
@@ -482,6 +487,26 @@ document
   .getElementById("closeICTModal")
   .addEventListener("click", hideVoiceModal);
 
+function showIntroductionModalModal() {
+  const modal = document.getElementById("IntroductionModalBackground");
+  modal.style.display = "flex";
+  window.addEventListener("click", hideIntroductionModal);
+  // Dispatch modal open event
+  window.dispatchEvent(new Event("modalOpen"));
+}
+
+// Function to hide voice modal
+function hideIntroductionModal(event) {
+  event.stopPropagation();
+  const modal = document.getElementById("IntroductionModalBackground");
+  modal.style.display = "none";
+  // Dispatch modal close event
+  window.dispatchEvent(new Event("modalClose"));
+}
+document
+  .getElementById("closeIntroductionModal")
+  .addEventListener("click", hideIntroductionModal);
+
 
 window.showNaafaModal = showNaafaModal;
 window.showFailerModal = showFailerModal;
@@ -494,6 +519,7 @@ window.showServerModal = showServerModal;
 window.showSWHWModal = showSWHWModal;
 window.showICTModal = showICTModal;
 window.showVoiceModal = showVoiceModal;
+window.showIntroductionModalModal = showIntroductionModalModal;
 
 document.getElementById("platform-link").addEventListener("click", function () {
   // Redirect to another page when the "Platform" text is clicked
