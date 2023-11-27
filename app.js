@@ -212,7 +212,7 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
     const centralNode = graphData.nodes.find((n) => n.id === "RobotNcom");
     const techNode = graphData.nodes.find((n) => n.id === "technology");
     const platformNode = graphData.nodes.find((n) => n.id === "Platform");
-    const introNode = graphData.nodes.find((n) => n.id === "`Introduction`");
+    const introNode = graphData.nodes.find((n) => n.id === "Introduction");
 
     if (centralNode && techNode && platformNode && introNode) {
       centralNode.__threeObj.scale.set(4, 4, 4);
