@@ -1,0 +1,19 @@
+{
+    "nodes": [
+      {"id": "SI", "group": 1},
+      {"id": "server solution", "group": 2},
+      {"id": "security solutions", "group": 2},
+      {"id": "Computer HW", "group": 2},
+      {"id": "Voice Infrastructure", "group": 2},
+      {"id": "network solutions", "group": 2},
+      {"id": "Computer SW", "group": 2}
+    ],
+    "links": [
+      {"source": "server solution", "target": "SI", "value": 2},
+      {"source": "security solutions", "target": "SI", "value": 2},
+      {"source": "Computer HW", "target": "SI", "value": 2},
+      {"source": "Voice Infrastructure", "target": "SI", "value": 2},
+      {"source": "network solutions", "target": "SI", "value": 2},
+      {"source": "Computer SW", "target": "SI", "value": 2}
+    ]
+  }
