@@ -355,7 +355,14 @@
                     voiceNode.__threeObj.scale.set(1.5, 1.5, 1.5);
                 }
             });
+            
+        window.addEventListener("modalOpen", () => {
+            isModalOpen = true;
+        });
 
+        window.addEventListener("modalClose", () => {
+            isModalOpen = false;
+        });
         
 
         setInterval(() => {
