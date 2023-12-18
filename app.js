@@ -599,9 +599,9 @@ window.addEventListener("mousedown", (e) => {
     // 1000 밀리초(1초) 후에 함수 실행을 위한 타임아웃 설정
     mouseDownTimeout = setTimeout(() => {
       // 1초 후에 실행할 코드
-      console.log(
-        `${e.button === 0 ? "왼쪽" : "오른쪽"} 마우스 버튼이 눌렸습니다.`
-      );
+      // console.log(
+      //   `${e.button === 0 ? "왼쪽" : "오른쪽"} 마우스 버튼이 눌렸습니다.`
+      // );
       // 여기서 함수를 호출하거나 다른 작업을 수행할 수 있습니다.
       // 예를 들어, getMouseDirection(e)와 같은 함수를 호출할 수 있습니다.
       getMouseDirection(e);
