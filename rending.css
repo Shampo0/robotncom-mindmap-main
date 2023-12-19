@@ -44,9 +44,12 @@
     border: 2px solid transparent;
     border-radius: 50%;
     position: relative;
+    /* animation: draw 2s ease-in-out forwards, fill 1s ease-in-out 2s forwards,
+    showImage 1s ease-in-out ,
+    hideElements 1s ease-in-out  ; */
     animation: draw 2s ease-in-out forwards, fill 1s ease-in-out 2s forwards,
-      showImage 1s ease-in-out 3s forwards,
-      hideElements 1s ease-in-out 5s forwards;
+    showImage 1s ease-in-out 3s forwards,
+    hideElements 1s ease-in-out 5s forwards;
   }
   /* PC 4k (해상도 1921px ~ 2560px)*/ 
 @media all and (min-width:2561px) and (max-width:3840px) { 
@@ -206,6 +209,9 @@
   h1 {
     color: white;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -213,4 +219,5 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     animation: showH1 1s ease-in-out 3.5s forwards, hideElements 1s ease-in-out 5s forwards;
+    /* animation: showH1 1s ease-in-out; */
   }
