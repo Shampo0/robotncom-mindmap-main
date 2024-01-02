@@ -3,8 +3,6 @@
 const distance = 250;
 let isModalOpen = false;
 
-
-
 // Function to calculate distance between two nodes with units
 function calculateDistanceWithUnits(node1, node2) {
   const dx = node1.x - node2.x;
@@ -20,7 +18,6 @@ const nodeImages = {
   2: {
     Platform: "image/Platform.svg",
     technology: "image/SI.svg",
-    Introduction: "image/Intro.svg",
   },
   3: {
     Failertalk: "image/Failertalk.svg",
@@ -32,8 +29,6 @@ const nodeImages = {
     "Voice Infrastructure": "image/Voiceinfra.svg",
     "Computer SW+HW": "image/Software.svg",
     ICT: "image/ict.svg",
-    history: "image/history.svg",
-    "Our Competence": "image/competence.svg",
   },
 };
 
@@ -74,8 +69,6 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
         "Voice Infrastructure",
         "network solutions",
         "ICT",
-        "history",
-        "Our Competence",
       ].includes(node.id)
     ) {
       const targetNodes = ["RobotNcom"];
@@ -144,15 +137,8 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
         case "Voice Infrastructure":
           showVoiceModal();
           break;
-        case "RobotNcom":
-          showIntroModal();
-          break;
-        case "history":
-          showHistoryModal();
-          break;
-        case "Our Competence":
-          showIntroductionModalModal();
-          break;
+        
+        
         default:
           break;
       }
@@ -213,28 +199,26 @@ const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
       return group;
     }
   })
+
   .onEngineTick(() => {
     const graphData = Graph.graphData();
+    const centralNode = graphData.nodes.find((n) => n.id === "RobotNcom");
     const techNode = graphData.nodes.find((n) => n.id === "technology");
     const platformNode = graphData.nodes.find((n) => n.id === "Platform");
-    const introNode = graphData.nodes.find((n) => n.id === "Introduction");
-    const centralNode = graphData.nodes.find((n) => n.id === "RobotNcom");
     if (centralNode) {
       // 중앙 노드의 위치를 고정
       centralNode.x = 0;
       centralNode.y = 0;
       centralNode.z = 0;
-  
-      // 중앙 노드의 THREE.js 객체가 있는 경우 위치를 업데이트하지 않도록 설정
-      if (centralNode.__threeObj) {
-        centralNode.__threeObj.position.set(0, 0, 0);
-      }
-    }
-    if (centralNode && techNode && platformNode && introNode) {
+            // 중앙 노드의 THREE.js 객체가 있는 경우 위치를 업데이트하지 않도록 설정
+            if (centralNode.__threeObj) {
+              centralNode.__threeObj.position.set(0, 0, 0);
+            }
+          }
+    if (centralNode && techNode && platformNode) {
       centralNode.__threeObj.scale.set(4, 4, 4);
       techNode.__threeObj.scale.set(2, 2, 2);
       platformNode.__threeObj.scale.set(2, 2, 2);
-      introNode.__threeObj.scale.set(2, 2, 2);
     }
   });
 
@@ -247,13 +231,17 @@ window.addEventListener("modalClose", () => {
   isModalOpen = false;
 });
 
+// Camera orbit
 setInterval(() => {
-  Graph.cameraPosition({
-    x: distance * Math.sin(angle),
-    z: distance * Math.cos(angle),
-  });
-  angle += Math.PI / 6000;
+  if (!isModalOpen) {
+    Graph.cameraPosition({
+      x: distance * Math.sin(angle),
+      z: distance * Math.cos(angle),
+    });
+    angle += Math.PI / 6500;
+  }
 }, 10);
+
 // Use Three.js onWindowResize event to handle window resize
 window.addEventListener("resize", () => {
   Graph.width(window.innerWidth);
@@ -497,69 +485,6 @@ document
   .getElementById("closeICTModal")
   .addEventListener("click", hideVoiceModal);
 
-// Function to show voice modal
-function showIntroModal() {
-  const modal = document.getElementById("IntroModalBackground");
-  modal.style.display = "flex";
-  window.addEventListener("click", hideIntroModal);
-  // Dispatch modal open event
-  window.dispatchEvent(new Event("modalOpen"));
-}
-
-// Function to hide voice modal
-function hideIntroModal(event) {
-  event.stopPropagation();
-  const modal = document.getElementById("IntroModalBackground");
-  modal.style.display = "none";
-  // Dispatch modal close event
-  window.dispatchEvent(new Event("modalClose"));
-}
-document
-  .getElementById("closeIntroModal")
-  .addEventListener("click", hideIntroModal);
-
-// Function to show voice modal
-function showHistoryModal() {
-  const modal = document.getElementById("HistoryModalBackground");
-  modal.style.display = "flex";
-  window.addEventListener("click", hideHistoryModal);
-  // Dispatch modal open event
-  window.dispatchEvent(new Event("modalOpen"));
-}
-
-// Function to hide voice modal
-function hideHistoryModal(event) {
-  event.stopPropagation();
-  const modal = document.getElementById("HistoryModalBackground");
-  modal.style.display = "none";
-  // Dispatch modal close event
-  window.dispatchEvent(new Event("modalClose"));
-}
-document
-  .getElementById("closeHistoryModal")
-  .addEventListener("click", hideHistoryModal);
-
-  // Function to show Introduction modal
-  function showIntroductionModalModal() {
-    const modal = document.getElementById("IntroductionModalBackground");
-    modal.style.display = "flex";
-    window.addEventListener("click", hideIntroductionModal);
-    // Dispatch modal open event
-    window.dispatchEvent(new Event("modalOpen"));
-  }
-  
-  // Function to hide Introduction modal
-  function hideIntroductionModal(event) {
-    event.stopPropagation();
-    const modal = document.getElementById("IntroductionModalBackground");
-    modal.style.display = "none";
-    // Dispatch modal close event
-    window.dispatchEvent(new Event("modalClose"));
-  }
-  document
-    .getElementById("closeIntroductionModal")
-    .addEventListener("click", hideIntroductionModal);
-
 window.showNaafaModal = showNaafaModal;
 window.showFailerModal = showFailerModal;
 window.showTtackModal = showTtackModal;
@@ -571,9 +496,6 @@ window.showServerModal = showServerModal;
 window.showSWHWModal = showSWHWModal;
 window.showICTModal = showICTModal;
 window.showVoiceModal = showVoiceModal;
-window.showIntroModal = showIntroModal;
-window.showHistoryModal = showHistoryModal;
-window.showIntroductionModalModal = showIntroductionModalModal;
 
 let angle = 182;
 setInterval(() => {
@@ -599,9 +521,9 @@ window.addEventListener("mousedown", (e) => {
     // 1000 밀리초(1초) 후에 함수 실행을 위한 타임아웃 설정
     mouseDownTimeout = setTimeout(() => {
       // 1초 후에 실행할 코드
-      // console.log(
-      //   `${e.button === 0 ? "왼쪽" : "오른쪽"} 마우스 버튼이 눌렸습니다.`
-      // );
+      console.log(
+        `${e.button === 0 ? "왼쪽" : "오른쪽"} 마우스 버튼이 눌렸습니다.`
+      );
       // 여기서 함수를 호출하거나 다른 작업을 수행할 수 있습니다.
       // 예를 들어, getMouseDirection(e)와 같은 함수를 호출할 수 있습니다.
       getMouseDirection(e);
